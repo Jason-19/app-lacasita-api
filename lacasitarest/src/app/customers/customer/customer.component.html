@@ -1,0 +1,59 @@
+<div class="flex ml-5 p-5 items-center space-x-3">
+    <input type="text" placeholder="Buscar"
+        class="p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500">
+
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+    </svg>
+
+</div>
+
+ <div *ngIf="customers.length === 0" class="mx-auto max-w-7xl  sm:px-6 sm:py-32 lg:px-8">
+        <div
+
+            class="relative isolate overflow-hidden bg-black px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+    
+            <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+                <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">{{errMessage}}</h2>
+                <!-- <p class="mt-6 text-lg/8 text-pretty text-gray-300"></p>  -->
+                <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+                    <a href="#"
+                        class="rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Crear Cliente</a>
+                </div>
+            </div>
+            <div class="relative mt-16 h-80 lg:mt-8">
+                {{errMessage}}
+            </div> 
+        </div>
+ </div>
+
+<div *ngIf="customers.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5 m-5">
+    <div *ngFor="let customer of customers" class="bg-white p-4 rounded shadow-md">
+        <h3 class="text-lg font-semibold">{{ customer.name}}</h3>
+        <p class="text-gray-500">{{ customer.email}}</p>
+        <p class="text-gray-500">Estado: {{customer.is_active ? 'Activo':'No'}}</p>
+    </div>
+</div>
+
+
+<!-- <ul role="list" class="divide-y divide-gray-100 ">
+    <li class="flex justify-between gap-x-5 py-5">
+        <div class="flex min-w-0 gap-x-4">
+            <img class="size-12 flex-none rounded-full bg-gray-50"
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt="">
+            <div class="min-w-0 flex-auto">
+                <p class="text-sm/6 font-semibold text-gray-900">Leslie Alexander</p>
+                <p class="mt-1 truncate text-xs/5 text-gray-500">leslie.alexander&#64;example.com</p>
+            </div>
+        </div>
+        <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+            <p class="text-sm/6 text-gray-900">Co-Founder / CEO</p>
+            <p class="mt-1 text-xs/5 text-gray-500">Last seen <time datetime="2023-01-23T13:23Z">3h ago</time></p>
+        </div>
+    </li>
+</ul> -->
+
+<!-- https://tailwindui.com/components/application-ui/forms/form-layouts -->

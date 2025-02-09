@@ -1,0 +1,81 @@
+<div *ngIf="orders.length >0" class="p-6">
+
+
+    <div class="relative overflow-x-auto shadow-md">
+        <table class="w-full text-sm text-left rtl:text-right text-black">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-100 font-bold">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        order
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        fecha
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        tipo
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        estado
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Total
+                    </th>
+
+
+                    <!--  -->
+                    <th scope="col" class="px-6 py-3">
+                        <span class="sr-only">Edit</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let order of orders" class="uppercase">
+                <tr class="bg-white border-b border-gray-200 hover:bg-gray-100">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        {{order.nombre}}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{order.fecha}}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{order.tipo_entrega}}
+                    </td>
+
+                    <td class="px-6 py-4" [ngClass]="order.estado === 'completed'?'text-green-400' :''">
+                        {{order.estado}}
+                    </td>
+
+                    <td class="px-6 py-4">
+                        {{order.total}}
+                    </td>
+
+                    <!--  -->
+                    <td class="px-6 py-4 text-right">
+                        <a routerLink="/order/edit"
+                            (click)="edit_order(order)"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<div *ngIf="orders.length === 0" class="mx-auto max-w-7xl  sm:px-6 sm:py-32 lg:px-8">
+    <div
+        class="relative isolate overflow-hidden bg-black px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+
+        <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+            <h2 class="text-4xl font-semibold tracking-tight text-balance text-white sm:text-4xl">{{orders? "No tieenes Pedidos":""}}</h2>
+            <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+                <a routerLink="/menu"
+                    class="rounded-md bg-red-500 p-5 text-lg font-semibold text-white shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Realizar
+                    Pedido</a>
+
+            </div>
+        </div>
+    </div>
+</div>

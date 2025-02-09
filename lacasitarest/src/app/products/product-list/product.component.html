@@ -1,0 +1,36 @@
+<div class="grid grid-cols-2 p-1  h-10">
+    <!-- <Button type="button" class="bg-red-500 text-white font-bold p-3 rounded-lg">Cancel</Button> -->
+    <Button type="button" class="bg-red-500 text-white font-bold rounded-lg" (click)="create_product()">Nuevo</Button>
+</div>
+
+<div *ngIf="products.length > 0; else noProducts"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5 m-5">
+    <div *ngFor="let product of products" class=" rounded shadow-md hover:bg-slate-100">
+        
+        <div (click)="update_product(product)" class="flex-grow ">
+            <h3 class="text-lg font-semibold">{{ product.name }}</h3>
+            <p class="text-gray-500">{{ product.description}}</p>
+            <p class="text-gray-500">Price: {{ product.price }} $</p>
+            <p class="text-gray-500">Stock: {{ product.stock }}</p>
+            <p class="text-gray-500">Disponible: {{ product.available ? 'Yes' : 'No' }}</p>
+        </div>
+    </div>
+</div>
+
+<ng-template #noProducts>
+    <div *ngIf="products.length === 0" class="mx-auto max-w-7xl sm:px-6 sm:py-32 lg:px-8 ">
+        <div
+            class="relative overflow-hidden bg-black p-6 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+
+            <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+                <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">{{products ? "No Tienes Productos Almacenados":''}}</h2>
+                <p class="mt-6 text-lg/8 text-pretty text-gray-300">Crea tu primer producto !</p> 
+                <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+
+                    <a routerLink="/create/product" class="rounded-md bg-red-500 px-5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-gray-100 hover:text-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Crear Productos</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

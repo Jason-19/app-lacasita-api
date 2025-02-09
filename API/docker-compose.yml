@@ -1,0 +1,22 @@
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    container_name: db_lacasita_container
+    environment:
+      MYSQL_DATABASE: ''
+      MYSQL_USER: 'jason'
+      MYSQL_PASSWORD: 'admin'
+      MYSQL_ROOT_PASSWORD: 'superadmin'
+    ports:
+      - '5001:3306'
+    volumes:
+      - my-db:/var/lib/mysql
+
+volumes:
+  my-db:
+
+# docker exec -it db_lacasita_container bash
+# mysql -u root -p
+# GRANT ALL PRIVILEGES ON *.* TO 'jason'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;

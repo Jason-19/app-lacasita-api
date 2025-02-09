@@ -1,0 +1,47 @@
+<div  *ngIf="products.length > 0; else noProducts">
+    <nav >
+        <div class="mx-auto max-w-7xl p-5 ">
+            <div class="flex overflow-hidden overflow-x-auto scrollbar-hidden gap-4 uppercase md:justify-start ">
+                <div class="font-semibold">
+                    <a class="p-3 hover:bg-gray-200">Almuerzo</a>
+                    <a class="p-3 hover:bg-gray-200">Hambuerguesa</a>
+                    <a class="p-3 hover:bg-gray-200">Alitas</a>
+                    <a class="p-3 hover:bg-gray-200">Nachos</a>
+                    <a class="p-3 hover:bg-gray-200">quesadillas</a>
+                </div>
+            </div>
+        </div>
+
+    </nav>  
+    <!--  -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-0 p-5">
+
+        <div  *ngFor="let product of products"  class="bg-white m-4 rounded-xl shadow-lg flex flex-col hover:scale-110 p-5">
+         
+            <a class="flex-grow" (click)="add_product(product)">
+                <img class="h-[80%] w-auto object-contain md:h-[80%] rounded-lg" src="background.jpg" alt="{{product.name}}">
+                <h3 class="text-lg uppercase">{{ product.name }}</h3>
+            </a>
+            <p class="font-bold">Price: {{ product.price}} $</p>
+            <p class="text-gray-500">Disponible: {{ product.available ? '✅' : '❌' }}</p>
+            
+                
+        </div>
+    </div>
+</div>
+
+<ng-template #noProducts>
+    <div *ngIf="products.length === 0" class="mx-auto max-w-7xl  sm:px-6 sm:py-32 lg:px-8">
+        <div class="relative isolate overflow-hidden bg-black px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+            <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+                <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">{{products ? "No Tienes productos para el menú":''}}</h2>
+                <p class="mt-6 text-lg/8 text-pretty text-gray-300">Realiza tu primer pedido </p>
+                <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+                    <a routerLink="/menu"
+                        class="rounded-md bg-red-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Pedir
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

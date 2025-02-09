@@ -1,0 +1,9 @@
+.scrollbar-hidden::-webkit-scrollbar {
+    /* Ocultar barras de scroll en navegadres */
+    display: none;
+}
+
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

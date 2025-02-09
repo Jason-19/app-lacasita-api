@@ -1,0 +1,55 @@
+<div>{{message}}</div>
+<!-- main lgin -->
+<div class="flex items-center justify-center ">
+  <div class="bg-white p-8 rounded-lg shadow-xl w-96">
+    <h2 class="text-2xl font-bold text-center text-gray-700 mb-6">Iniciar sesión</h2>
+    <div class="text-center mb-4">
+      <img src="favicon.png" alt="Logo" class="w-36 h-36 rounded-full object-cover mx-auto">
+    </div>
+
+    <form [formGroup]="form_login" (ngSubmit)="login()">
+
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700">Correo electrónico</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          formControlName='email'
+          class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+          placeholder="correo" required />
+          
+      </div>
+
+
+      <div class="mb-6">
+        <label for="password" class="block text-gray-700">Contraseña</label>
+        <input 
+          required
+          type="password" 
+          id="password" 
+          name="password" 
+          formControlName ="password"
+          class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-400"
+          placeholder="contraseña" 
+          />
+      </div>
+
+
+      <button type="submit"
+        class="w-full p-3 bg-red-600 text-white font-bold rounded-lg hover:bg-black focus:outline-none focus:ring-2 focus:ring-black disabled:bg-red-200"
+        [disabled]="form_login.invalid"
+        >
+        Iniciar sesión
+      </button>
+    </form>
+
+    <div class="mt-4 text-center">
+      <a routerLink="/singin" class="text-teal-700 hover:underline">Registrarse</a>
+    </div>
+    <div class="mt-4 text-center">
+      <a  class="text-teal-700 hover:underline">Restablecer Contraseña</a>
+    </div>
+
+  </div>
+</div>
